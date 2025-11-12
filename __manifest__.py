@@ -10,8 +10,8 @@
         'account',
     ],
     'data': [
-        #'security/ir.model.access.csv',
         'views/account_move_views.xml',
-
     ],
+    'installable': True,
+    'images': ['static/description/icon.png'],
 }
