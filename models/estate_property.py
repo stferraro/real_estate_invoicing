@@ -1,4 +1,4 @@
-from odoo import models, fields, api, Command
+from odoo import models, fields, api, Command, _
 from odoo.exceptions import UserError
 
 
@@ -26,13 +26,13 @@ class EstateProperty(models.Model):
                 'property_id': rec.id,
                 'invoice_line_ids': [
                     Command.create({
-                        'name': f'Sale of property {rec.name}',
+                        'name': _('Sale of property %(property)s') % {'property': rec.name},
                         'quantity': 1,
                         'price_unit': rec.selling_price,
                         'tax_ids': [(6, 0, [tax.id])],
                     }),
                     Command.create({
-                        'name': 'Administrative Fee',
+                        'name': _('Administrative Fee'),
                         'quantity': 1,
                         'price_unit': 100.00,
                         'tax_ids': [(6, 0, [tax.id])],
